@@ -1,0 +1,1 @@
+"..\sourse\head.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(..\sourse) DEBUG OBJECTEXTEND PRINT(.\Listings\head.lst) TABS (2) OBJECT(..\output\head.obj)

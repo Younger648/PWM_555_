@@ -1,0 +1,8 @@
+"..\output\main.obj",
+"..\output\hc138.obj",
+"..\output\SMG.obj",
+"..\output\key.obj",
+"..\output\head.obj",
+"..\output\led.obj" 
+TO "..\output\pwm" 
+PRINT(".\Listings\pwm.m51") RAMSIZE(256) 

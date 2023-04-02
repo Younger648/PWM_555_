@@ -1,0 +1,94 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/01/2023 20:44:43 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\output\main.obj
+COMPILER INVOKED BY: D:\software\keil\C51\BIN\C51.EXE ..\sourse\main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\sourse) DEBUG 
+                    -OBJECTEXTEND PRINT(.\Listings\main.lst) TABS(2) OBJECT(..\output\main.obj)
+
+line level    source
+
+   1          #include "head.h"
+   2          
+   3          
+   4          void Timer0Init()   //100微秒@12.000MHz
+   5          {
+   6   1      
+   7   1        TMOD = 0x01;    //设置定时器模式
+   8   1        TL0 = (65535 - 100) % 256;
+   9   1        TH0 = (65535 - 100) / 256;
+  10   1      
+  11   1        ET0 = 1;
+  12   1        EA = 1;
+  13   1        TR0 = 1;
+  14   1      
+  15   1      }
+  16          
+  17          
+  18          void ServiceTimer0() interrupt 1
+  19          {
+  20   1        static unsigned char ms_100 = 0;
+  21   1        static unsigned char ms_1000 = 0;
+  22   1        
+  23   1        TL0 = (65535 - 10) % 256;
+  24   1        TH0 = (65535 - 10) / 256;
+  25   1        
+  26   1        ms_100 ++;
+  27   1        ms_1000 ++;
+  28   1        
+  29   1        if(ms_100 == 10)
+  30   1        {
+  31   2          
+  32   2          led_pwm();
+  33   2          ms_100 = 0;
+  34   2        }
+  35   1        
+  36   1        
+  37   1        
+  38   1        if(ms_1000 == 100)
+  39   1        {
+  40   2          SMG_show();
+*** WARNING C206 IN LINE 40 OF ..\sourse\main.c: 'SMG_show': missing function-prototype
+  41   2          ms_1000 = 0;
+  42   2        }
+  43   1        
+  44   1      
+  45   1      
+  46   1      }
+  47          
+  48          
+  49          
+  50          
+  51          
+  52          
+  53          
+C51 COMPILER V9.60.0.0   MAIN                                                              04/01/2023 20:44:43 PAGE 2   
+
+  54          
+  55          void main()
+  56          {
+  57   1        SelectHC138(4);
+  58   1        Timer0Init();
+  59   1        while(1)
+  60   1        {
+  61   2          
+  62   2          SconKey();
+  63   2        }
+  64   1      }
+  65          
+  66          
+  67          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    119    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
