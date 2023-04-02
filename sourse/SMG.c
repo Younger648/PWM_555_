@@ -39,8 +39,13 @@ void SMG_config(unsigned char adr,unsigned char dat)
 	delay(1);
 	SelectHC138(7);
 	P0 = dat;
-
 }
+
+
+
+
+
+
 
 void SMG_show()
 {
@@ -94,6 +99,10 @@ void SMG_show()
 	}
 	SMG_config(SMG_weizhi[adr_1],SMG_duanma[dat_1]);
 }
+
+
+
+
 
 
 

@@ -16,8 +16,9 @@ void pwm_led_sw()
 		pwm_duty = 10;
 	else if(sw == 2)
 		pwm_duty = 50;
-	else if(sw == 3)
+	else if(sw == 3)		
 		pwm_duty = 90;
+
 }
 
 
